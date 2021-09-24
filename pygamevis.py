@@ -32,7 +32,6 @@ def run_sudoku():
     sf.draw_values(screen, su_settings)
 
     while True:
-        sf.check_events()
         sf.solve(screen, su_settings, field, timer)
 
 
