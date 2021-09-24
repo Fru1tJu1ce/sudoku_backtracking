@@ -81,6 +81,7 @@ def check_rules(sudoku, value, i, j):
 
 def solve(screen, su_settings, field, timer):
     """Ищет решение судоку."""
+    check_events()
     contents = zero_search(su_settings.sudoku)
     if not contents:
         return True
@@ -90,7 +91,7 @@ def solve(screen, su_settings, field, timer):
     # Проверяем подхождение value под правила игры
     while value <= 9:
         # Отрисовка проверяемого значения
-        draw_value(value, screen, su_settings, i, j)
+        draw_value(value, screen, i, j)
         draw_timer(timer)
         pygame.display.flip()
 
@@ -102,7 +103,7 @@ def solve(screen, su_settings, field, timer):
         value += 1
 
     draw_timer(timer)
-    draw_value(value, screen, su_settings, i, j)
+    draw_value(value, screen, i, j)
     su_settings.sudoku[i][j] = 0
 
     return False
@@ -132,7 +133,7 @@ def draw_values(screen, su_settings):
     for i in range(9):
         for j in range(9):
             if su_settings.sudoku[i][j] != 0:
-                draw_value(su_settings.sudoku[i][j], screen, su_settings, i, j)
+                draw_value(su_settings.sudoku[i][j], screen, i, j)
                 pygame.display.flip()
 
 
