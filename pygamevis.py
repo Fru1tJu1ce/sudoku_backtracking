@@ -5,6 +5,7 @@ from settings import Settings
 from field import SudokuField
 from timer import Timer
 import sudoku_functions as sf
+from button import Button
 
 
 def run_sudoku():
@@ -22,9 +23,12 @@ def run_sudoku():
     # Создаем экземпляр поля
     field = SudokuField(screen)
 
+    # Создаем экземпляр кнопки
+    button = Button(screen, 'Solve!')
+    button.draw_button()
+
     # Сетап таймера
-    start_time = time.time()
-    timer = Timer(su_settings, screen, start_time)
+    timer = Timer(su_settings, screen)
     timer.draw_timer()
 
     # Вывод поля и известных значений судоку
@@ -32,7 +36,11 @@ def run_sudoku():
     sf.draw_values(screen, su_settings)
 
     while True:
-        sf.solve(screen, su_settings, field, timer)
+        sf.check_events(button, su_settings)
+        if su_settings.solving_active:
+            timer.time = time.time()
+            sf.solve(screen, su_settings, field, timer, button)
+            su_settings.solving_active = False
         pygame.display.flip()
 
 
