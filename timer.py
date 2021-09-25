@@ -4,7 +4,7 @@ import pygame
 class Timer:
     """Класс для создания таймера."""
 
-    def __init__(self, su_settings, screen, time):
+    def __init__(self, su_settings, screen, time=0):
         """Инициализирует атрибуты таймера."""
         self.screen = screen
         self.time = time
@@ -17,7 +17,7 @@ class Timer:
         self.time_image = self.font.render('Time: 0', True, self.text_color,
                                            (255, 255, 255))
         self.time_image_rect = self.time_image.get_rect()
-        self.time_image_rect.centerx = 820
+        self.time_image_rect.centerx = 872
         self.time_image_rect.centery = 64
 
     def update_time(self, new_time):
