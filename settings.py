@@ -8,6 +8,9 @@ class Settings():
         self.screen_height = 768
         self.screen_color = (255, 255, 255)
 
+        # Флаг для решения
+        self.solving_active = False
+
         # Рассматриваемая судоку
         self.bg_color = (255, 255, 255)
         self.sudoku = [
