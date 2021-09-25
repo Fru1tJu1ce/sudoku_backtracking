@@ -33,6 +33,7 @@ def run_sudoku():
 
     while True:
         sf.solve(screen, su_settings, field, timer)
+        pygame.display.flip()
 
 
 if __name__ == '__main__':
